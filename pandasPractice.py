@@ -24,38 +24,54 @@ Third Part: Challenge yourself
             developed with pandas.
 """
 
+"""
+Abraham Lugo Ramirez
+Ingeniero de sistemas y computación
+3005608510
+labrahamdedios@gmail.com
+"""
 
-
-
+"Import libraries"
 import pandas as pd
 import numpy as np
-import glob
+
 
 class data():
    def __init__(self):
       """Reading excel file"""
+      """Point 0"""
       self.df = pd.read_excel('nba.xlsx', sheet_name='nba')
       self.df2 = pd.read_excel('nba2.xlsx', sheet_name='nba')
+      
+   def point1(self):
+      """Prints dataframes"""
+      print(self.df)
+      print(self.df2)
 
 
-   def point2(self, df, columna):
-      dataframe = df[columna].to_frame()   
+   def point2(self, columna):
+      """Returns a dataframe with a single column given to the original dataframe"""
+      dataframe = self.df[columna].to_frame()   
       return dataframe
  
-   def point3(self, df):
-      dataframe = df['Name'].values.tolist()
+   def point3(self):
+      """Name column List, In case I want to iterate"""
+      dataframe = self.df['Name'].values.tolist()
       return dataframe
  
-   def point4(self, df):
-      dataframe = df.loc[self.df['Team'] == "Boston Celtics"]
+   def point4(self):
+      """sub-dataframe filtered by a column value,  where Team ==Boston Celtics"""
+      dataframe = self.df.loc[self.df['Team'] == "Boston Celtics"]
       return dataframe
    
-   def point5(self, df, df2):
-      dataframe = pd.merge(df,df2, how="inner", on='Name')
+   def point5(self):
+      """merge of two dataframes with an inner join."""
+      dataframe = pd.merge(self.df, self.df2, how="inner", on='Name')
       return dataframe
    
-   def point6(self, df):
-      dataframe = df.loc[self.df['Team'] == "Boston Celtics"]
+   def point6(self):
+      dataframe = self.df.loc[self.df['Team'] == "Boston Celtics"]
+      #dataframe = point4()
       dataframe.to_excel("output.xlsx")
      
    
@@ -64,14 +80,10 @@ class data():
 
 if __name__ == '__main__':
    datos = data()
-  # print(datos.df2)
-   df2 =datos.point2(datos.df, 'Name')
-  # print(type(datos.df))
-   #print(type(df))
-   df3 = datos.point3(datos.df)
-   #print(df2)
-   df4 = datos.point4(datos.df)
-   df5 = datos.point5(datos.df, datos.df2)
-   print(df5)
-   datos.point6(datos.df)
+   datos.point1()
+   df2 = datos.point2('Name')
+   df3 = datos.point3()
+   df4 = datos.point4()
+   df5 = datos.point5()
+   datos.point6()
  
