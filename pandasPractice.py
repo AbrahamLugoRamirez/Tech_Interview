@@ -26,13 +26,52 @@ Third Part: Challenge yourself
 
 
 
+
 import pandas as pd
 import numpy as np
 import glob
-#0)
-df = pd.read_excel('nba.xlsx', sheet_name='nba')
-#1)
-print(df)
+
+class data():
+   def __init__(self):
+      """Reading excel file"""
+      self.df = pd.read_excel('nba.xlsx', sheet_name='nba')
+      self.df2 = pd.read_excel('nba2.xlsx', sheet_name='nba')
 
 
-#dff = pd.concat(df)
+   def point2(self, df, columna):
+      dataframe = df[columna].to_frame()   
+      return dataframe
+ 
+   def point3(self, df):
+      dataframe = df['Name'].values.tolist()
+      return dataframe
+ 
+   def point4(self, df):
+      dataframe = df.loc[self.df['Team'] == "Boston Celtics"]
+      return dataframe
+   
+   def point5(self, df, df2):
+      dataframe = pd.merge(df,df2, how="inner", on='Name')
+      return dataframe
+   
+   def point6(self, df):
+      dataframe = df.loc[self.df['Team'] == "Boston Celtics"]
+      dataframe.to_excel("output.xlsx")
+     
+   
+   #dff = pd.concat(df)
+
+
+if __name__ == '__main__':
+   datos = data()
+  # print(datos.df2)
+   df2 =datos.point2(datos.df, 'Name')
+  # print(type(datos.df))
+   #print(type(df))
+   df3 = datos.point3(datos.df)
+   #print(df2)
+   df4 = datos.point4(datos.df)
+   df5 = datos.point5(datos.df, datos.df2)
+   print(df5)
+   datos.point6(datos.df)
+ 
