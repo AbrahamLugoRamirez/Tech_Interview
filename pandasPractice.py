@@ -24,27 +24,15 @@ Third Part: Challenge yourself
             developed with pandas.
 """
 
+
+
 import pandas as pd
 import numpy as np
 import glob
-#df = pd.read_excel('nba.xlsx', sheet_name='nba')
+#0)
+df = pd.read_excel('nba.xlsx', sheet_name='nba')
+#1)
+print(df)
 
-def addData(files: str) -> list:
-        allCsv = []
-        for file in files:
-            temp = open(file, 'r', encoding='utf-8')
-            tempDf = pd.read_excel(temp)
-            allCsv.append(tempDf)
-            
-        return allCsv
-     
-def makeListOfDataFrames(list_of_dataframes):
-    auxiliar_list = []
-    len_of_dataframes = len(list_of_dataframes[0])
-    for i in range(len_of_dataframes):
-        dt = pd.DataFrame(list_of_dataframes[0][i])
-        auxiliar_list.append(dt)
-    return auxiliar_list
 
-def joinDataFrames(dataframes):
-    return pd.concat(dataframes)
+#dff = pd.concat(df)
